@@ -1,0 +1,29 @@
+<h4>User form</h4>
+
+<%= form_for @user do |f|%>
+    <p>
+      <%= f.label :first_name %><br/>
+      <%= f.text_field :first_name %>
+    </p>
+    <p>
+      <%= f.label :last_name %><br/>
+      <%= f.text_field :last_name %>
+    </p>
+    <p>
+      <%= f.label :photo %><br/>
+      <%= f.file_field :photo %>
+    </p>
+    <p>
+      <%= f.submit :data => {:disable_with=>"Saving..."} %>
+    </p>
+<% end %>
+
+<% if @users.any? %>
+    <% @users.each do |user| %>
+        <P>
+          First Name: <%= user.first_name %>
+          Last Name: <%= user.last_name %>
+          <img src="<%= user.photo.cthumb %>">
+        </P>
+    <% end %>
+<% end %>
